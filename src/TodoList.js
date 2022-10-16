@@ -8,18 +8,25 @@ class TodoList extends Component {
         super(props);
         this.state = { messages: [] }
         this.addTodo = this.addTodo.bind(this)
+        this.removeTodo = this.removeTodo.bind(this)
     }
     
-    addTodo(message) {
-        console.log("adding todo!")
-        let newMessage = [ ...this.state.messages, message]
-        this.setState({ messages: newMessage })
+    addTodo(item) {
+        let newMessages = [ ...this.state.messages, item.message]
+        this.setState({ messages: newMessages })
+    }
+
+    removeTodo(id) {
+        let removedMessages = this.state.messages.filter(message => {
+            return message.id !== id
+        })
+        this.setState({ messages: removedMessages })
     }
 
     render() {
         const boxes = this.state.messages.map(message => {
             const key = uuidv4()
-            return <Todo key={key} id={key} message={message} />
+            return <Todo key={key} id={key} message={message} removeTodo={this.removeTodo} />
         })
         return (
             <div className='TodoList'>

@@ -14,7 +14,7 @@ class TodoForm extends Component {
 
     handleSubmit(evt) {
         evt.preventDefault()
-        this.props.addTodo(this.state.message)
+        this.props.addTodo(this.state)
         this.setState({ message: "" })
     }
 
