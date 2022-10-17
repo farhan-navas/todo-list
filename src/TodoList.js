@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import TodoForm from './TodoForm'
 import Todo from './Todo'
-import { v4 as uuidv4 } from 'uuid'
 
 class TodoList extends Component {
     constructor(props) {
@@ -9,24 +8,33 @@ class TodoList extends Component {
         this.state = { messages: [] }
         this.addTodo = this.addTodo.bind(this)
         this.removeTodo = this.removeTodo.bind(this)
+        this.editTodo = this.editTodo.bind(this)
     }
     
     addTodo(item) {
-        let newMessages = [ ...this.state.messages, item.message]
+        let newMessages = [ ...this.state.messages, item]
         this.setState({ messages: newMessages })
     }
 
-    removeTodo(id) {
-        let removedMessages = this.state.messages.filter(message => {
-            return message.id !== id
+    removeTodo(item) {
+        let removedMessages = this.state.messages.filter(message => message.id !== item.id)
+        this.setState({ messages: removedMessages})
+    }
+
+    editTodo(id, editedTask) {
+        let editedMessages = this.state.messages.map(message => {
+            if (message.id === id) {
+               return {...message, task: editedTask}
+            } else {
+                return message
+            }
         })
-        this.setState({ messages: removedMessages })
+        this.setState({ messages: editedMessages})
     }
 
     render() {
         const boxes = this.state.messages.map(message => {
-            const key = uuidv4()
-            return <Todo key={key} id={key} message={message} removeTodo={this.removeTodo} />
+            return <Todo key={message.id} id={message.id} message={message.task} removeTodo={this.removeTodo} editTodo={this.editTodo} />
         })
         return (
             <div className='TodoList'>

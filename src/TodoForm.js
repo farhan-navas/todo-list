@@ -1,21 +1,22 @@
 import React, { Component } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 class TodoForm extends Component {
     constructor(props) {
         super(props)
-        this.state = { message: "" }
+        this.state = { task: "", id: "" }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
     
     handleChange(evt) {
-        this.setState({ message: evt.target.value })
+        this.setState({ task: evt.target.value })
     }
 
     handleSubmit(evt) {
         evt.preventDefault()
-        this.props.addTodo(this.state)
-        this.setState({ message: "" })
+        this.props.addTodo({task: this.state.task, id: uuidv4() })
+        this.setState({ task: "", id: "" })
     }
 
     render() {
@@ -25,7 +26,7 @@ class TodoForm extends Component {
                     <input 
                         type='text'
                         placeholder='new item'
-                        value={this.state.message}
+                        value={this.state.task}
                         onChange={this.handleChange}
                     />
                 <button>Add item to list</button>
