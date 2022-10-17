@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
+import "./Todo.css"
 
 class Todo extends Component {
     constructor(props) {
         super(props);
-        this.state = { task: this.props.message, isEditing: false }
+        this.state = { task: this.props.message, isEditing: false, completed: false }
         this.handleClick = this.handleClick.bind(this)
         this.handleEdit = this.handleEdit.bind(this)
         this.handleUpdate = this.handleUpdate.bind(this)
         this.handleChange = this.handleChange.bind(this)
+        this.handleComplete = this.handleComplete.bind(this)
     }
 
     handleClick() {
@@ -15,7 +17,8 @@ class Todo extends Component {
     }
 
     handleEdit() {
-        this.setState({ isEditing: !this.state.isEditing })
+        let newValue = !this.state.isEditing
+        this.setState({ isEditing: newValue })
     }
      
     handleUpdate(evt) {
@@ -27,6 +30,11 @@ class Todo extends Component {
 
     handleChange(evt) {
         this.setState({ task: evt.target.value })
+    }
+
+    handleComplete() {
+        let newValue = !this.state.completed
+        this.setState({ completed: newValue })
     }
 
     render() {
@@ -42,8 +50,8 @@ class Todo extends Component {
         } else {
             result =
                 <div>
-                    <div className='Todo'>
-                        {this.props.message}
+                    <div className={this.state.completed ? 'completed' : ""} onClick={this.handleComplete} style={{ cursor: "pointer" }}>
+                        {this.props.message} 
                     </div>
                     <button onClick={this.handleEdit}>Edit</button>
                     <button onClick={this.handleClick}>X</button>

@@ -9,6 +9,7 @@ class TodoList extends Component {
         this.addTodo = this.addTodo.bind(this)
         this.removeTodo = this.removeTodo.bind(this)
         this.editTodo = this.editTodo.bind(this)
+        this.completeTodo = this.completeTodo.bind(this)
     }
     
     addTodo(item) {
@@ -32,9 +33,20 @@ class TodoList extends Component {
         this.setState({ messages: editedMessages})
     }
 
+    completeTodo(id) {
+        let completedMessages = this.state.messages.map(message => {
+            if (message.id ===  id) {
+                return {...message, completed: true}
+            } else {
+                return message
+            }
+        })
+        this.setState({ messages: completedMessages })
+    }
+
     render() {
         const boxes = this.state.messages.map(message => {
-            return <Todo key={message.id} id={message.id} message={message.task} removeTodo={this.removeTodo} editTodo={this.editTodo} />
+            return <Todo key={message.id} id={message.id} message={message.task} removeTodo={this.removeTodo} editTodo={this.editTodo} completed={message.completed} />
         })
         return (
             <div className='TodoList'>
