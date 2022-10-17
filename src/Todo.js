@@ -41,20 +41,31 @@ class Todo extends Component {
         let result;
         if (this.state.isEditing) {
             result = 
-                <div>
-                    <form onSubmit={this.handleUpdate}>
+                <div className='TodoBox'>
+                    <form className='TodoBox-editform' onSubmit={this.handleUpdate}>
                         <input type='text' value={this.state.task} name='task' onChange={this.handleChange}></input>
-                        <button>Done</button>
+                        <button>
+                            <i class="fa-regular fa-square-check"></i>
+                        </button>
                     </form>
                 </div>
         } else {
             result =
-                <div>
-                    <div className={this.state.completed ? 'completed' : ""} onClick={this.handleComplete} style={{ cursor: "pointer" }}>
+                <div className='TodoBox'>
+                    <div className={this.state.completed ? 'TodoBox-message completed' : "TodoBox-message"} onClick={this.handleComplete} style={{ cursor: "pointer" }}>
+                        <div className={this.state.completed ? 'TodoBox-icon complete-tick' : "TodoBox-icon incomplete-tick"}>
+                            <i className="fa-sharp fa-solid fa-check"></i>
+                        </div>
                         {this.props.message} 
                     </div>
-                    <button onClick={this.handleEdit}>Edit</button>
-                    <button onClick={this.handleClick}>X</button>
+                    <div className='TodoBox-buttons'>
+                        <button onClick={this.handleEdit}>
+                            <i className='fas fa-pen'></i>
+                        </button>
+                        <button onClick={this.handleClick}>
+                            <i className="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
                 </div>
         }
         return result

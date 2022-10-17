@@ -1,3 +1,52 @@
-.completed {
+.TodoBox {
+    display: flex;
+    margin: 0 -3rem 4px;
+    padding: 0.8rem 3rem;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1) ;
+}
+
+.TodoBox-message {
+    display: flex;
+}
+
+.TodoBox div {
+    padding: 0px 5px;
+}
+
+.TodoBox-buttons {
+    flex-shrink: 0;
+    padding-left: 0.7em;
+}
+
+.TodoBox-buttons button {
+    border: none;
+    font-size: 1em;
+    margin: 0.4em;
+    background-color: transparent;
+    color: #fff;
+}
+
+.completed, .complete-tick {
     color: lightgray;
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.incomplete-tick {
+    display: none;
+}
+
+.TodoBox-editform {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.TodoBox-editform input {
+    flex-grow: 1;
+    border: none;
+    background-color: #f7f1f1;
+    padding: 0 0.5em;
+    font-size: initial;
 }

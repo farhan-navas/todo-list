@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import TodoForm from './TodoForm'
 import Todo from './Todo'
+import './TodoList.css'
 
 class TodoList extends Component {
     constructor(props) {
@@ -50,7 +51,7 @@ class TodoList extends Component {
         })
         return (
             <div className='TodoList'>
-                <h3 className='TodoList-header'>Todo List!</h3>
+                <h1 className='TodoList-header'>Todo List!</h1>
                 <div className='TodoList-description'>Simple Todo list made using CRA</div>
                 <div className='TodoList-boxes'>
                     {boxes}
