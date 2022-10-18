@@ -51,7 +51,7 @@ class TodoList extends Component {
         })
         return (
             <div className='TodoList'>
-                <h1 className='TodoList-header'>Todo List!</h1>
+                <h1 className='TodoList-header'>To-do List!</h1>
                 <div className='TodoList-description'>Simple Todo list made using CRA</div>
                 <div className='TodoList-boxes'>
                     {boxes}

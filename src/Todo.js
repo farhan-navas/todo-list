@@ -45,7 +45,7 @@ class Todo extends Component {
                     <form className='TodoBox-editform' onSubmit={this.handleUpdate}>
                         <input type='text' value={this.state.task} name='task' onChange={this.handleChange}></input>
                         <button>
-                            <i class="fa-regular fa-square-check"></i>
+                            <i className="fa-regular fa-square-check"></i>
                         </button>
                     </form>
                 </div>

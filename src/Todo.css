@@ -44,9 +44,22 @@
 }
 
 .TodoBox-editform input {
+    display: block;
     flex-grow: 1;
     border: none;
     background-color: #f7f1f1;
-    padding: 0 0.5em;
+    padding: 0.5em 0.5em;
+    line-height: 1em;
     font-size: initial;
+}
+
+.TodoBox-editform button {
+    padding: 0 1rem;
+    background: transparent;
+    text-transform: uppercase;
+    border: none;
+    margin-left: 5px;
+    cursor: pointer;
+    color: #f7f1f1;
+    font-size: 1.4em;
 }
