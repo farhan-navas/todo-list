@@ -13,6 +13,12 @@ class TodoList extends Component {
         this.completeTodo = this.completeTodo.bind(this)
     }
     
+    componentDidUpdate(prevProps, prevState) {
+        console.log("Inside component did update!")
+        console.log(prevState.messages)
+        console.log(this.state.messages)
+    }
+
     addTodo(item) {
         let newMessages = [ ...this.state.messages, item]
         this.setState({ messages: newMessages })
